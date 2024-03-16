@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Activities</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #monthlyActivities {
+            margin: 20px;
+        }
+        #subjectSelect {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monthly Activities</h1>
+
+    <div id="monthlyActivities">
+        <label for="subjectSelect">Select Subject:</label>
+        <select id="subjectSelect">
+            <option value="math">Math</option>
+            <option value="science">Science</option>
+            <option value="history">History</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <div id="activityDisplay">
+            <!-- Activities will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        // Sample activities for demonstration
+        const activities = {
+            math: ["Solve algebra problems", "Study geometry", "Review calculus concepts"],
+            science: ["Conduct experiments", "Study biology", "Explore physics principles"],
+            history: ["Read historical texts", "Analyze events", "Study ancient civilizations"]
+            // Add more activities as needed for each subject
+        };
+
+        // Function to update displayed activities based on selected subject
+        function updateActivities() {
+            const selectedSubject = document.getElementById("subjectSelect").value;
+            const activityDisplay = document.getElementById("activityDisplay");
+            activityDisplay.innerHTML = ""; // Clear previous activities
+
+            activities[selectedSubject].forEach(activity => {
+                const activityItem = document.createElement("p");
+                activityItem.textContent = activity;
+                activityDisplay.appendChild(activityItem);
+            });
+        }
+
+        // Attach event listener to subject select dropdown
+        document.getElementById("subjectSelect").addEventListener("change", updateActivities);
+
+        // Initial call to update activities based on the default selected subject
+        updateActivities();
+    </script>
+</body>
+</html>
